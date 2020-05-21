@@ -5,6 +5,7 @@ resource "aws_rds_cluster" "default" {
   database_name = var.rds_database_name
   master_username = var.rds_master_username
   master_password = var.rds_master_password
+  skip_final_snapshot = true
 }
 
 resource "aws_rds_cluster_instance" "rds_instance" {
