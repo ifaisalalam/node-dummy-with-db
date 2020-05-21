@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  node-dummy-with-db:
+    build: .
+    image: ifaisalalam/node-dummy-with-db
+    restart: on-failure
+    ports:
+    - 3000:3000
+    env_file:
+      - .env

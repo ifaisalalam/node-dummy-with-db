@@ -1,0 +1,29 @@
+{
+  "name": "dummy-with-db",
+  "version": "1.0.0",
+  "description": "A dummy application that also connects with a SQL database running on AWS.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifaisalalam/node-dummy-with-db.git"
+  },
+  "author": {
+    "name": "Faisal Alam",
+    "email": "ifaisalalam@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ifaisalalam/node-dummy-with-db/issues"
+  },
+  "homepage": "https://github.com/ifaisalalam/node-dummy-with-db#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fastify": "^2.14.1",
+    "knex": "^0.21.1",
+    "pg": "^8.2.1"
+  }
+}

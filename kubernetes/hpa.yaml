@@ -1,0 +1,11 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: node-dummy-with-db
+spec:
+  maxReplicas: 5
+  scaleTargetRef:
+    kind: Deployment
+    name: node-dummy-with-db
+    apiVersion: apps/v1
+  targetCPUUtilizationPercentage: 10

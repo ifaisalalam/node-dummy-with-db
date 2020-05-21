@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: secrets-writer
+  namespace: default
+rules:
+  - apiGroups: ["v1"]
+    verbs: ["create"]
+    resources:
+      - secrets
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: write-secrets
+  namespace: default
+subjects:
+  - kind: ServiceAccount
+    name: token-rotation-service
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: secrets-writer
+  apiGroup: rbac.authorization.k8s.io

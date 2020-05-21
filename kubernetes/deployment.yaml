@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-dummy-with-db
+  labels:
+    app: node-dummy-with-db
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 25%
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: node-dummy-with-db
+  template:
+    metadata:
+      labels:
+        app: node-dummy-with-db
+    spec:
+      containers:
+        - name: node-dummy-with-db
+          image: ifaisalalam/node-dummy-with-db
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              port: 3000
+              path: '/ping'
+            initialDelaySeconds: 5
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              port: 3000
+              path: '/ping'
+            initialDelaySeconds: 2
+            periodSeconds: 5
+            timeoutSeconds: 10
+          envFrom:
+            - secretRef:
+                name: node-dummy-with-db
